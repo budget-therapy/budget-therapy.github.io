@@ -12795,3 +12795,10 @@ header.masthead .bg-circle-4 {
     padding: 1rem 2rem;
   }
 }
+
+@media (max-width: 768px) {
+  header.masthead {
+    padding-top: calc(3rem + 72px);
+    padding-bottom: 5rem;
+  }
+}
