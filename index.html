@@ -196,29 +196,36 @@
                         <h2 class="display-4" style="margin-top:50px;">Be a part of our Podcast!</h2>
                         <p>Are you in the greater Denver area and passionate about sharing your financial journey? We're looking for local guests to join our podcast, share their stories, and help inspire others. Whether you're just starting out or you're just looking to further your skillset, your experience could make a difference. Reach out and become part of our growing community!</p>
                         
-                        <form class="row g-3 needs-validation" style="margin-bottom: 50px;" novalidate>
+                        <form class="row g-3 needs-validation" id="join-show-form" style="margin-bottom: 50px;" onsubmit="return submitGoogleForm(event)" novalidate="">
                             <div class="col-md-6">
                                 <label for="firstname" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstname" value="" required>
+                                <input type="text" class="form-control" id="firstname" value="" required="">
+                                <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
-                                    Please provide a First Name.
+                                    Please provide a first name.
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="lastname" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastname" value="">
+                                <input type="text" class="form-control" id="lastname" value="" required="">
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">
+                                    Please provide a last name.
+                                </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="emailaddress" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="emailaddress" value="" required>
+                                <input type="email" class="form-control" id="emailaddress" value="" required="">
+                                <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
-                                    Please provide an email address.
+                                    Please provide a valid email address.
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="phonenumber" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phonenumber" required>
+                                <input type="text" class="form-control" id="phonenumber" required="">
+                                <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
                                     Please provide a phone number.
                                 </div>
@@ -228,25 +235,25 @@
                                 <label class="form-label">Annual Income</label>
                                 <div class="clear"></div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="30k" value="option1" checked>
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="30k" value="&lt; $30,000" checked>
                                     <label class="form-check-label" for="30k">
                                         &lt; $30,000
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="30k60k" value="option2">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="30kto60k" value="$30,000 - $60,000">
                                     <label class="form-check-label" for="30k60k">
                                         $30,000 - $60,000
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="60k90k" value="option2">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="60kto90k" value="$60,000 - $90,000">
                                     <label class="form-check-label" for="60k90k">
                                         $60,000 - $90,000
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="90k" value="option2">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gt90k" value="&gt; $90,000">
                                     <label class="form-check-label" for="90k">
                                         &gt; $90,000
                                     </label>
@@ -255,14 +262,16 @@
 
                             <div class="col-md-6">
                                 <label for="rent" class="form-label">Rent (Monthly)</label>
-                                <input type="text" class="form-control" id="rent" required>
+                                <input type="text" class="form-control" id="rent" required="">
+                                <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
                                     Please provide a monthly rent figure.
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="debt" class="form-label">Debt (Total)</label>
-                                <input type="text" class="form-control" id="debt" required>
+                                <input type="text" class="form-control" id="debt" required="">
+                                <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
                                     Please provide an estimated debt figure.
                                 </div>
@@ -270,17 +279,24 @@
 
                             <div class="col-md-12">
                                 <label for="comments" class="form-label">Tell us about your current financial situation and your financial goals - ie what would you like our guidance on?</label>
-                                <textarea class="form-control" aria-label="Comments" id="comments"></textarea>
+                                <textarea class="form-control" aria-label="Comments" id="comments" required=""></textarea>
+                                <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
                                     Please provide your comments.
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <button class="btn btn-primary rounded-pill px-4" id="send-btn">Send</button>
+                                <input type="submit" class="btn btn-primary rounded-pill px-4" id="send-btn" value="Send" />
                             </div>
+
+                            <div class="col-12" id="form-message">
+                                
+                            </div>
+                            
                         </form>
 
+                        
                     </div>
                 </div>
             </div>
@@ -310,6 +326,8 @@
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- JQuery Full JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
