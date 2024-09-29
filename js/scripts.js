@@ -1,5 +1,11 @@
 $(function () {
-    // Placeholder
+    // Prevent Form Submission on Enter
+    $(document).on('keyup keypress', 'form input[type="text"]', function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
 });
 
 
@@ -13,6 +19,12 @@ const successMessage = `
 const errorMessage = `
 <div id="google-form-error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
     Sorry! There was an error submitting this form, please try sending us an email at <span style="white-space:nowrap;"><a href="mailto:nic@budget-therapy.com" class="alert-link">nic@budget-therapy.com</a></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+`;
+const formValidationMessage = `
+<div id="google-form-error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+    Oops, please check that all the required fields are filled in and re-submit!
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 `;
@@ -42,6 +54,7 @@ function submitGoogleForm(event) {
     if (!form.checkValidity()) {
         validJoinForm = false;
         form.classList.add('was-validated');
+        $("#form-message").html(formValidationMessage);
     } else {
         validJoinForm = true;
         form.classList.remove('was-validated');
@@ -57,34 +70,45 @@ function submitGoogleForm(event) {
         var annualIncome = $('input[name="gridRadios"]:checked').val();
         var rentMonthly = $('#rent').val();
         var debtTotal = $('#debt').val();
-        var comment = $('#comments').val();
+        var comment = $('#comments').val().replace(/\n/g, '<br \\>');
+
+        // Disable submit button until complete
+        $("#send-btn").prop("disabled", true);
+        $("#send-btn").html("<div class='spinner-border text-light' style='vertical-align: middle; height: 1.5rem; width: 1.5rem;'></div>");
+        $("#form-message").html("");
 
         // Submit Google Form
         $.ajax({
-            url: "https://docs.google.com/forms/d/e/1FAIpQLSfNeRXa5TpshFP4lZr1RX-rvKh1_SkpjzDeHUSb55WpU4Dq1w/formResponse",
-            data: {
-                "entry.535990808": firstName,
-                "entry.1543733340": lastName,
-                "entry.1149073394": emailAddress,
-                "entry.198946514": phoneNumber,
-                "entry.891155476": annualIncome,
-                "entry.1574405577": rentMonthly,
-                "entry.1919481366": debtTotal,
-                "entry.1210713953": comment,
-            },
+            url: "https://script.google.com/macros/s/AKfycbwSUsTIFV8Vx_vJBsVlcaJ427uNnRlWBvutdgs7HSBx8n_4VPR0cL64fdIX4TFlARb-/exec",
+            data: JSON.stringify({
+                "firstName": firstName,
+                "lastName": lastName,
+                "emailAddress": emailAddress,
+                "phoneNumber": phoneNumber,
+                "annualIncome": annualIncome,
+                "rentMonthly": rentMonthly,
+                "debtTotal": debtTotal,
+                "comment": comment,
+            }),
             type: "POST",
-            dataType: "xml",
+            redirect: "follow",
+            contentType: 'text/plain;charset=utf-8',
             complete: function (e, xhr, settings) {
-                if (e.status === 0) {
-                    $("#form-message").html(successMessage);
-                    resetGoogleForm();
-                } else if (e.status === 200) {
-                    $("#form-message").html(successMessage);
-                    resetGoogleForm();
+                if (e.status === 200) {
+                    if (e.responseJSON.result === "success") {
+                        $("#form-message").html(successMessage);
+                        resetGoogleForm();
+                    } else {
+                        $("#form-message").html(errorMessage);
+                        // Don't reset form on failure
+                    }
                 } else {
                     $("#form-message").html(errorMessage);
                     // Don't reset form on failure
                 }
+                // Re-enable submit button
+                $("#send-btn").html("Send");
+                $("#send-btn").prop("disabled", false);
             }
         });
     }
