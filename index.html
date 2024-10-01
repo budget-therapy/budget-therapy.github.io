@@ -17,7 +17,7 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
 
-    <body id="home" style="background-color:#e8e8e8;">
+    <body id="home" style="background-color:#f0f0f0;">
 
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
@@ -82,7 +82,7 @@
         </section>
 
         <!-- Content Testimonials Section -->
-        <section id="testimonials" style="background-color: #fff;">
+        <section id="testimonials" style="background-color: #fdfdfd;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
@@ -194,9 +194,9 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <h2 class="display-4" style="margin-top:50px;">Be a part of our Podcast!</h2>
-                        <p>Are you in the greater Denver area and passionate about sharing your financial journey? We're looking for local guests to join our podcast, share their stories, and help inspire others. Whether you're just starting out or you're just looking to further your skillset, your experience could make a difference. Reach out and become part of our growing community!</p>
+                        <p style="margin-bottom: 1.7rem;">Are you in the greater Denver area and passionate about sharing your financial journey? We're looking for local guests to join our podcast, share their stories, and help inspire others. Whether you're just starting out or you're just looking to further your skillset, your experience could make a difference. Reach out and become part of our growing community!</p>
                         
-                        <form class="row g-3 needs-validation" id="join-show-form" style="margin-bottom: 50px;" onsubmit="return submitGoogleForm(event)" novalidate="">
+                        <form class="row g-3 needs-validation" id="join-show-form" style="margin-bottom: 50px;background-color: #e7e7e7;border-radius: 8px;padding-left: 0.5rem;padding-right:0.5rem;" onsubmit="return submitGoogleForm(event)" novalidate="">
                             <div class="col-md-6">
                                 <label for="firstname" class="form-label">First Name</label>
                                 <input type="text" class="form-control" id="firstname" value="" required="" maxlength="1000">
@@ -232,9 +232,9 @@
                             </div>
                             
                             <div class="col-12">
-                                <label class="form-label">Annual Income</label>
+                                <div class="form-label">Annual Income</div>
                                 <div class="clear"></div>
-                                <div class="form-check form-check-inline">
+                                <div class="form-check form-check-inline" id="income-radios">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="30k" value="&lt; $30,000" checked>
                                     <label class="form-check-label" for="30k">
                                         &lt; $30,000
@@ -242,19 +242,19 @@
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="30kto60k" value="$30,000 - $60,000">
-                                    <label class="form-check-label" for="30k60k">
+                                    <label class="form-check-label" for="30kto60k">
                                         $30,000 - $60,000
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="60kto90k" value="$60,000 - $90,000">
-                                    <label class="form-check-label" for="60k90k">
+                                    <label class="form-check-label" for="60kto90k">
                                         $60,000 - $90,000
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="gt90k" value="&gt; $90,000">
-                                    <label class="form-check-label" for="90k">
+                                    <label class="form-check-label" for="gt90k">
                                         &gt; $90,000
                                     </label>
                                 </div>
@@ -308,7 +308,7 @@
         </section>
 
         <!-- Footer-->
-        <footer class="py-5" style="background-color:#342e2e;color:#fbfbfb;">
+        <footer class="pt-5 pb-1" style="background-color:#342e2e;color:#e9e9e9;">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-center">
                     <h2>Budget Therapy</h2>
@@ -318,12 +318,23 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
                     <div class="d-flex flex-row align-items-center flex-wrap">
-                        <div class="form-floating" style="max-width:300px;margin-right:10px;">
-                            <input type="email" class="form-control" id="email-list" placeholder="">
-                            <label for="email-list" style="color:#b2b2b2;">Email address</label>
+                        <div class="input-group" style="max-width:400px;">
+                            <input type="text" id="email-signup" class="form-control" placeholder="Your Email Address" style="padding: 0.5rem 1rem;">
+                            <button class="btn btn-secondary" type="button">SIGN UP</button>
                         </div>
-                        <button class="btn btn-secondary rounded-pill">SIGN UP</button>
+
                     </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center" style="margin-top: 4rem;">
+                    <a class="btn-youtube" href="https://www.youtube.com/@Budget-Therapy" target="_blank">
+                        <span class="fa-stack" style="vertical-align: top;">
+                            <i class="fas fa-circle fa-stack-1x" style="color:#fff;"></i>
+                            <i class="fas fa-brands fa-youtube fa-stack-2x"></i>
+                        </span>
+                    </a>
+                </div>
+                <div class="d-flex align-items-center justify-content-center" style="margin-top:10px;">
+                    <p>&copy; 2024 Budget Therapy. All Rights Reserved.</p>
                 </div>
                 <!-- <p class="m-0 text-center small">Copyright &copy; 2024 Budget Therapy</p> -->
             </div>

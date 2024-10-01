@@ -2350,12 +2350,12 @@ progress {
 }
 
 .form-control::-moz-placeholder {
-  color: #6c757d;
+  color: #b2b2b2;
   opacity: 1;
 }
 
 .form-control::placeholder {
-  color: #6c757d;
+  color: #b2b2b2;
   opacity: 1;
 }
 
@@ -12651,6 +12651,7 @@ header.masthead {
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
   /* background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%); */
+  background: linear-gradient(0deg, #000000 0%, #342e2e 100%);
   background: url('/assets/img/masthead.png');
   background-repeat: no-repeat;
   background-position: center center;
@@ -12804,4 +12805,13 @@ header.masthead .bg-circle-4 {
     padding-top: calc(3rem + 72px);
     padding-bottom: 5rem;
   }
+}
+
+.btn-youtube {
+  color: #ff0000;
+  font-size: 1.25rem;
+}
+
+.btn-youtube:hover {
+  color: #d80000;
 }
