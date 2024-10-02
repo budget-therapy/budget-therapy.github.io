@@ -6,6 +6,10 @@ $(function () {
             return false;
         }
     });
+
+    // Update copyright year
+    $('#copyright-year').html(new Date().getFullYear());
+
 });
 
 

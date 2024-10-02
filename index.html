@@ -82,7 +82,7 @@
         </section>
 
         <!-- Content Testimonials Section -->
-        <section id="testimonials" style="background-color: #fdfdfd;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;">
+        <section id="testimonials" class="shadow-sm" style="background-color: #fdfdfd;">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
@@ -193,12 +193,12 @@
             <div class="container custom-p-large">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
-                        <h2 class="display-4" style="margin-top:50px;">Be a part of our Podcast!</h2>
-                        <p style="margin-bottom: 1.7rem;">Are you in the greater Denver area and passionate about sharing your financial journey? We're looking for local guests to join our podcast, share their stories, and help inspire others. Whether you're just starting out or you're just looking to further your skillset, your experience could make a difference. Reach out and become part of our growing community!</p>
+                        <h2 class="display-4" style="margin-top:35px;">Be a part of our Podcast!</h2>
+                        <p style="margin-bottom: 2rem;">Are you in the greater Denver area and passionate about sharing your financial journey? We're looking for local guests to join our podcast, share their stories, and help inspire others. Whether you're just starting out or you're just looking to further your skillset, your experience could make a difference. Reach out and become part of our growing community!</p>
                         
                         <form class="row g-3 needs-validation" id="join-show-form" style="margin-bottom: 50px;background-color: #e7e7e7;border-radius: 8px;padding-left: 0.5rem;padding-right:0.5rem;" onsubmit="return submitGoogleForm(event)" novalidate="">
                             <div class="col-md-6">
-                                <label for="firstname" class="form-label">First Name</label>
+                                <label for="firstname" class="form-label">First Name <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="firstname" value="" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
@@ -206,7 +206,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="lastname" class="form-label">Last Name</label>
+                                <label for="lastname" class="form-label">Last Name <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="lastname" value="" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
@@ -215,7 +215,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="emailaddress" class="form-label">Email Address</label>
+                                <label for="emailaddress" class="form-label">Email Address <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="emailaddress" value="" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
@@ -223,7 +223,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="phonenumber" class="form-label">Phone Number</label>
+                                <label for="phonenumber" class="form-label">Phone Number <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="phonenumber" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
@@ -232,7 +232,7 @@
                             </div>
                             
                             <div class="col-12">
-                                <div class="form-label">Annual Income</div>
+                                <div class="form-label">Annual Income <span class=text-required>*</span></div>
                                 <div class="clear"></div>
                                 <div class="form-check form-check-inline" id="income-radios">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="30k" value="&lt; $30,000" checked>
@@ -261,7 +261,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="rent" class="form-label">Rent (Monthly)</label>
+                                <label for="rent" class="form-label">Rent (Monthly) <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="rent" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
@@ -269,7 +269,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="debt" class="form-label">Debt (Total)</label>
+                                <label for="debt" class="form-label">Debt (Total) <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="debt" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
@@ -278,7 +278,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="comments" class="form-label">Tell us about your current financial situation and your financial goals - ie what would you like our guidance on?</label>
+                                <label for="comments" class="form-label">Tell us about your current financial situation and your financial goals - ie what would you like our guidance on? <span class=text-required>*</span></label>
                                 <textarea class="form-control" aria-label="Comments" id="comments" required="" maxlength="10000"></textarea>
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">
@@ -334,9 +334,8 @@
                     </a>
                 </div>
                 <div class="d-flex align-items-center justify-content-center" style="margin-top:10px;">
-                    <p>&copy; 2024 Budget Therapy. All Rights Reserved.</p>
+                    <p>&copy; <span id="copyright-year">2024</span> Budget Therapy. All Rights Reserved.</p>
                 </div>
-                <!-- <p class="m-0 text-center small">Copyright &copy; 2024 Budget Therapy</p> -->
             </div>
         </footer>
 

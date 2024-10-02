@@ -58,7 +58,7 @@
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bs-body-font-family: Circular, Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -127,7 +127,7 @@ h1,
 .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Circular, "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 800;
   line-height: 1.2;
 }
@@ -135,6 +135,12 @@ h1,
 h1,
 .h1 {
   font-size: calc(1.375rem + 1.5vw);
+  font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+h2.masthead-subheading {
+  font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @media (min-width: 1200px) {
@@ -12766,8 +12772,8 @@ header.masthead .bg-circle-4 {
 }
 
 .custom-p-large {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 .custom-p-all {
@@ -12781,8 +12787,8 @@ header.masthead .bg-circle-4 {
   }
 
   .custom-p-large {
-    padding-left: 12em;
-    padding-right: 12em;
+    padding-left: 10em;
+    padding-right: 10em;
   }
 
   .custom-p-all {
@@ -12791,6 +12797,13 @@ header.masthead .bg-circle-4 {
 
   .custom-g {
     --bs-gutter-x: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .custom-p-large {
+    padding-left: 12em;
+    padding-right: 12em;
   }
 }
 
@@ -12814,4 +12827,32 @@ header.masthead .bg-circle-4 {
 
 .btn-youtube:hover {
   color: #d80000;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url("/assets/fonts/CircularStd-Book.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url("/assets/fonts/CircularStd-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url("/assets/fonts/CircularStd-BookItalic.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+  text-rendering: optimizeLegibility;
+}
+
+.text-required {
+  color: red;
 }
