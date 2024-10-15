@@ -74,7 +74,7 @@ function submitGoogleForm(event) {
         var annualIncome = $('input[name="gridRadios"]:checked').val();
         var rentMonthly = $('#rent').val();
         var debtTotal = $('#debt').val();
-        var comment = $('#comments').val().replace(/\n/g, '<br \\>');
+        var comment = $('#comments').val().replace(/\n/g, '<br>');
 
         // Disable submit button until complete
         $("#send-btn").prop("disabled", true);
