@@ -40,6 +40,7 @@ function resetGoogleForm() {
     $('#lastname').val("");
     $('#emailaddress').val("");
     $('#phonenumber').val("");
+    $('#age').val("");
     $('input[name="gridRadios"]:first').prop('checked', true);
     $('#rent').val("");
     $('#debt').val("");
@@ -71,6 +72,7 @@ function submitGoogleForm(event) {
         var lastName = $('#lastname').val();
         var emailAddress = $('#emailaddress').val();
         var phoneNumber = $('#phonenumber').val();
+        var age = $('#age').val();
         var annualIncome = $('input[name="gridRadios"]:checked').val();
         var rentMonthly = $('#rent').val();
         var debtTotal = $('#debt').val();
@@ -89,6 +91,7 @@ function submitGoogleForm(event) {
                 "lastName": lastName,
                 "emailAddress": emailAddress,
                 "phoneNumber": phoneNumber,
+                "age": age,
                 "annualIncome": annualIncome,
                 "rentMonthly": rentMonthly,
                 "debtTotal": debtTotal,
