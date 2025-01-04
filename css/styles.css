@@ -12701,11 +12701,23 @@ header.masthead {
   padding-bottom: 7rem;
   /* background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%); */
   background: linear-gradient(0deg, #000000 0%, #342e2e 100%);
-  background: url('/assets/img/masthead.png');
+  background: url('/assets/img/masthead-small.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll;
   background-size: cover;
+}
+
+@media (min-width: 768px) { /* Medium screens and up */
+  header.masthead {
+      background-image: url('/assets/img/masthead-medium.png');
+  }
+}
+
+@media (min-width: 1200px) { /* Large screens and up */
+  header.masthead {
+      background-image: url('/assets/img/masthead.png'); /* Original high-res image */
+  }
 }
 
 header.masthead .masthead-content {
