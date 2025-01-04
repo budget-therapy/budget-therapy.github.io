@@ -4348,6 +4348,16 @@ fieldset:disabled .btn {
   color: var(--bs-navbar-brand-color);
   text-decoration: none;
   white-space: nowrap;
+  flex-grow: 1; /* Allow title to take up available space */
+  flex-shrink: 1; /* Allow title to shrink if needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 991.98px) { /* Bootstrap's lg breakpoint - 1 */
+  .navbar-brand {
+      font-size: 1.2rem; /* Reduced font size on smaller screens */
+  }
 }
 
 .navbar-brand:hover,
@@ -4405,6 +4415,7 @@ fieldset:disabled .btn {
   border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
   border-radius: var(--bs-navbar-toggler-border-radius);
   transition: var(--bs-navbar-toggler-transition);
+  flex-shrink: 0; /* Prevent the button from shrinking - THIS IS THE KEY */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4557,6 +4568,13 @@ fieldset:disabled .btn {
   .navbar-expand-lg {
     flex-wrap: nowrap;
     justify-content: flex-start;
+  }
+
+  .navbar-expand-lg .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
   }
 
   .navbar-expand-lg .navbar-nav {
@@ -4851,6 +4869,7 @@ fieldset:disabled .btn {
   flex: 1 1 auto;
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   color: var(--bs-card-color);
+  min-height: 150px;
 }
 
 .card-title {
