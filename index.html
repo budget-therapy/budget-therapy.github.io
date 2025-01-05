@@ -211,133 +211,108 @@
                         
                         <form class="row g-3 needs-validation" id="join-show-form" style="margin-bottom: 50px;background-color: #e7e7e7;border-radius: 8px;padding-left: 0.5rem;padding-right:0.5rem;" onsubmit="return submitGoogleForm(event)" novalidate="">
                             <div class="col-md-6">
-                                <label for="firstname" class="form-label">First Name <span class=text-required>*</span></label>
+                                <label for="firstname" class="form-label">First Name <span class="text-required">*</span></label>
                                 <input type="text" class="form-control" id="firstname" value="" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a first name.
-                                </div>
+                                <div class="invalid-feedback">Please provide a first name.</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="lastname" class="form-label">Last Name <span class=text-required>*</span></label>
+                                <label for="lastname" class="form-label">Last Name <span class="text-required">*</span></label>
                                 <input type="text" class="form-control" id="lastname" value="" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a last name.
-                                </div>
+                                <div class="invalid-feedback">Please provide a last name.</div>
                             </div>
-
                             <div class="col-md-6">
-                                <label for="emailaddress" class="form-label">Email Address <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="emailaddress" value="" required="" maxlength="1000">
+                                <label for="emailaddress" class="form-label">Email Address <span class="text-required">*</span></label>
+                                <input type="email" class="form-control" id="emailaddress" value="" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a valid email address.
-                                </div>
+                                <div class="invalid-feedback">Please provide a valid email address.</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="phonenumber" class="form-label">Phone Number <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="phonenumber" required="" maxlength="1000">
+                                <label for="phoneNumber" class="form-label">Phone Number <span class="text-required">*</span></label>
+                                <input type="tel" class="form-control" id="phoneNumber" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a phone number.
-                                </div>
+                                <div class="invalid-feedback">Please provide a phone number.</div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="phonenumber" class="form-label">Age <span class=text-required>*</span></label>
-                                <input type="number" step="1" class="form-control" id="age" required="" maxlength="1000">
+                                <div class="col-md-6">
+                                <label for="age" class="form-label">Age <span class=text-required>*</span></label>
+                                <input type="number" step="1" class="form-control" id="age" required="" maxlength="3">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a round number.
-                                </div>
+                                <div class="invalid-feedback">Please provide a round number.</div>
                             </div>
-                            
-                            <div class="col-12">
-                                <div class="form-label">Annual Income <span class=text-required>*</span></div>
-                                <div class="clear"></div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="30k" value="&lt; $30,000" checked>
-                                    <label class="form-check-label" for="30k">
-                                        &lt; $30,000
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="30kto60k" value="$30,000 - $60,000">
-                                    <label class="form-check-label" for="30kto60k">
-                                        $30,000 - $60,000
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="60kto90k" value="$60,000 - $90,000">
-                                    <label class="form-check-label" for="60kto90k">
-                                        $60,000 - $90,000
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gt90k" value="&gt; $90,000">
-                                    <label class="form-check-label" for="gt90k">
-                                        &gt; $90,000
-                                    </label>
-                                </div>
+                                <div class="col-md-6">
+                                <label for="annualIncome" class="form-label">Annual Income <span class=text-required>*</span></label>
+                                <input type="number" class="form-control" id="annualIncome" required="" maxlength="10">
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">Please provide a number.</div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-label">Which area of your finances do you struggle most with? (Select all that apply) <span class=text-required>*</span></div>
-                                <div class="clear"></div>
-                            
-                                <div class="form-check">  <input class="form-check-input" type="checkbox" id="trackingExpenses" name="focusAreas[]" value="Tracking Expenses" checked>
-                                    <label class="form-check-label" for="trackingExpenses">Tracking Expenses</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="creatingBudget" name="focusAreas[]" value="Creating a Budget">
-                                    <label class="form-check-label" for="creatingBudget">Creating a Budget</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="savingShortTerm" name="focusAreas[]" value="Saving for Short-Term Goals">
-                                    <label class="form-check-label" for="savingShortTerm">Saving for Short-Term Goals</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="managingIrregularIncome" name="focusAreas[]" value="Managing Irregular Income">
-                                    <label class="form-check-label" for="managingIrregularIncome">Managing Irregular Income</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="breakingPaycheck" name="focusAreas[]" value="Breaking the Paycheck-to-Paycheck Cycle">
-                                    <label class="form-check-label" for="breakingPaycheck">Breaking the Paycheck-to-Paycheck Cycle</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="dealingWithDebt" name="focusAreas[]" value="Dealing with Debt">
-                                    <label class="form-check-label" for="dealingWithDebt">Dealing with Debt</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                                <div class="col-md-6">
                                 <label for="rent" class="form-label">Rent (Monthly) <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="rent" required="" maxlength="1000">
+                                <input type="number" class="form-control" id="rent" required="" maxlength="10">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a monthly rent figure.
-                                </div>
+                                <div class="invalid-feedback">Please provide a monthly rent figure.</div>
                             </div>
-                            <div class="col-md-6">
+                                <div class="col-md-6">
                                 <label for="debt" class="form-label">Debt (Total) <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="debt" required="" maxlength="1000">
+                                <input type="number" class="form-control" id="debt" required="" maxlength="10">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide an estimated debt figure.
+                                <div class="invalid-feedback">Please provide an estimated debt figure.</div>
+                            </div>
+                                <div class="col-md-6">
+                                <label for="companyName" class="form-label">Company Name <span class=text-required>*</span></label>
+                                <input type="text" class="form-control" id="companyName" name="companyName" required="" maxlength="1000">
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">Please provide a company name.</div>
+                            </div>
+                                <div class="col-md-6">
+                                <label for="jobTitle" class="form-label">Role/Title <span class=text-required>*</span></label>
+                                <input type="text" class="form-control" id="jobTitle" required="" maxlength="1000">
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">Please provide your title.</div>
+                            </div>
+                                <div class="col-md-12">
+                                <label for="basicFeedback" class="form-label">What is your primary challenge or goal right now? <span class=text-required>*</span></label>
+                                <input type="text" class="form-control" id="basicFeedback" name="basicFeedback" required="" maxlength="1000">
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">Please provide a some basic context around issues you or your team is facing, or goals you wish to acheive with us.</div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-label">Which area of your finances do you struggle most with? (Select all that apply) <span class="text-required">*</span></div>
+                                <div class="clear"></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="trackingExpensesCheck" name="focusAreas[]" value="Tracking Expenses">
+                                    <label class="form-check-label" for="trackingExpensesCheck">Tracking Expenses</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="creatingBudgetCheck" name="focusAreas[]" value="Creating a Budget" checked>
+                                    <label class="form-check-label" for="creatingBudgetCheck">Creating a Budget</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="savingShortTermCheck" name="focusAreas[]" value="Saving for Short-Term Goals">
+                                    <label class="form-check-label" for="savingShortTermCheck">Saving for Short-Term Goals</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="managingIrregularIncomeCheck" name="focusAreas[]" value="Managing Irregular Income">
+                                    <label class="form-check-label" for="managingIrregularIncomeCheck">Managing Irregular Income</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="breakingPaycheckCheck" name="focusAreas[]" value="Breaking the Paycheck-to-Paycheck Cycle">
+                                    <label class="form-check-label" for="breakingPaycheckCheck">Breaking the Paycheck-to-Paycheck Cycle</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dealingWithDebtCheck" name="focusAreas[]" value="Dealing with Debt">
+                                    <label class="form-check-label" for="dealingWithDebtCheck">Dealing with Debt</label>
                                 </div>
                             </div>
-
                             <div class="col-md-12">
-                                <label for="comments" class="form-label">Tell us about your current financial situation and your financial goals - ie what would you like our guidance on? <span class=text-required>*</span></label>
+                                <label for="comments" class="form-label">Tell us about your current financial situation and your financial goals - ie what would you like our guidance on? <span class="text-required">*</span></label>
                                 <textarea class="form-control" aria-label="Comments" id="comments" required="" maxlength="10000"></textarea>
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide your comments.
-                                </div>
+                                <div class="invalid-feedback">Please provide your comments.</div>
                             </div>
-
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary rounded-pill px-4" id="send-btn">Send</button>
                             </div>
-
                             <div class="col-12" id="form-message">
                                 <noscript>
                                     <div id="google-form-error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
@@ -346,7 +321,7 @@
                                     </div>
                                 </noscript>
                             </div>
-                            
+
                         </form>
 
                         
