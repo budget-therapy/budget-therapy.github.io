@@ -48,12 +48,13 @@ function resetGoogleForm() {
     $('#emailaddress').val("");
     $('#phonenumber').val("");
     $('#age').val("");
-    ('#budgetingRating').val("5");
+    ('#budgetingRating').val(5);
     $('input[name="gridRadios"]:first').prop('checked', true);
     $('#rent').val("");
     $('#debt').val("");
     $('#comments').val("");
     $('input[name="focusAreas[]"]').prop('checked', false);
+    $('#creatingBudgetCheck').prop('checked', true);
 }
 
 
