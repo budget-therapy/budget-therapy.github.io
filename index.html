@@ -2,16 +2,6 @@
 <html lang="en">
 
     <head>
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-54F4B5M3JS">
-      </script>
-      <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-54F4B5M3JS');
-      </script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -39,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/coach">Budgeting Coach</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
                         <li class="nav-item"><a class="nav-link" href="#join">Join The Show</a></li>
                     </ul>
                 </div>
@@ -234,86 +224,75 @@
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide a phone number.</div>
                             </div>
-                                <div class="col-md-6">
-                                <label for="age" class="form-label">Age <span class=text-required>*</span></label>
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Age <span class="text-required">*</span></label>
                                 <input type="number" step="1" class="form-control" id="age" required="" maxlength="3">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide a round number.</div>
                             </div>
-                                <div class="col-md-6">
-                                <label for="annualIncome" class="form-label">Annual Income <span class=text-required>*</span></label>
-                                <input type="number" class="form-control" id="annualIncome" required="" maxlength="10">
-                                <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">Please provide a number.</div>
-                            </div>
+                        
                             <div class="col-12">
-                                <div class="form-label">Annual Income <span class=text-required>*</span></div>
+                                <div class="form-label">Annual Income <span class="text-required">*</span></div>
                                 <div class="clear"></div>
                                 <div class="form-check form-check-inline" id="income-radios">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="30k" value="&lt; $30,000" checked>
-                                    <label class="form-check-label" for="30k">
-                                        &lt; $30,000
-                                    </label>
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="30k" value="< $30,000" checked>
+                                    <label class="form-check-label" for="30k">&lt; $30,000</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="30kto60k" value="$30,000 - $60,000">
-                                    <label class="form-check-label" for="30kto60k">
-                                        $30,000 - $60,000
-                                    </label>
+                                    <label class="form-check-label" for="30kto60k">$30,000 - $60,000</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="60kto90k" value="$60,000 - $90,000">
-                                    <label class="form-check-label" for="60kto90k">
-                                        $60,000 - $90,000
-                                    </label>
+                                    <label class="form-check-label" for="60kto90k">$60,000 - $90,000</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gt90k" value="&gt; $90,000">
-                                    <label class="form-check-label" for="gt90k">
-                                        &gt; $90,000
-                                    </label>
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gt90k" value="> $90,000">
+                                    <label class="form-check-label" for="gt90k">&gt; $90,000</label>
                                 </div>
                             </div>
+                        
                             <div class="col-md-6">
-                                <label for="rent" class="form-label">Rent (Monthly) <span class=text-required>*</span></label>
-                                <input type="number" class="form-control" id="rent" required="" maxlength="10">
+                                <label for="rentMonthly" class="form-label">Rent (Monthly) <span class="text-required">*</span></label>
+                                <input type="number" class="form-control" id="rentMonthly" required="" maxlength="10">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide a monthly rent figure.</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="debt" class="form-label">Debt (Total) <span class=text-required>*</span></label>
-                                <input type="number" class="form-control" id="debt" required="" maxlength="10">
+                                <label for="debtTotal" class="form-label">Debt (Total) <span class="text-required">*</span></label>
+                                <input type="number" class="form-control" id="debtTotal" required="" maxlength="10">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide an estimated debt figure.</div>
                             </div>
-                            <div class="col-md-6">
+                                <div class="col-md-6">
                                 <label for="companyName" class="form-label">Company Name <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="companyName" name="companyName" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide a company name.</div>
                             </div>
-                            <div class="col-md-6">
+                                <div class="col-md-6">
                                 <label for="jobTitle" class="form-label">Role/Title <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="jobTitle" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide your title.</div>
                             </div>
-                            <div class="col-md-12">
+                                <div class="col-md-12">
                                 <label for="basicFeedback" class="form-label">What is your primary challenge or goal right now? <span class=text-required>*</span></label>
                                 <input type="text" class="form-control" id="basicFeedback" name="basicFeedback" required="" maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide a some basic context around issues you or your team is facing, or goals you wish to acheive with us.</div>
                             </div>
+                        
                             <div class="col-12">
                                 <div class="form-label">Which area of your finances do you struggle most with? (Select all that apply) <span class="text-required">*</span></div>
                                 <div class="clear"></div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="trackingExpensesCheck" name="focusAreas[]" value="Tracking Expenses">
-                                    <label class="form-check-label" for="trackingExpensesCheck">Tracking Expenses</label>
-                                </div>
-                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="creatingBudgetCheck" name="focusAreas[]" value="Creating a Budget" checked>
                                     <label class="form-check-label" for="creatingBudgetCheck">Creating a Budget</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="trackingExpensesCheck" name="focusAreas[]" value="Tracking Expenses">
+                                    <label class="form-check-label" for="trackingExpensesCheck">Tracking Expenses</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="savingShortTermCheck" name="focusAreas[]" value="Saving for Short-Term Goals">
@@ -349,9 +328,7 @@
                                     </div>
                                 </noscript>
                             </div>
-
                         </form>
-
                         
                     </div>
                 </div>
