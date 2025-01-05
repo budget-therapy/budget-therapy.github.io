@@ -48,7 +48,7 @@ function resetGoogleForm() {
     $('#emailaddress').val("");
     $('#phonenumber').val("");
     $('#age').val("");
-    ('#budgetingRating').val("");
+    ('#budgetingRating').val("5");
     $('input[name="gridRadios"]:first').prop('checked', true);
     $('#rent').val("");
     $('#debt').val("");
