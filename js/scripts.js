@@ -44,7 +44,6 @@ function resetGoogleForm() {
     $('input[name="gridRadios"]:first').prop('checked', true);
     $('#rent').val("");
     $('#debt').val("");
-    $('#basicFeedback').val("");
     $('#comments').val("");
     $('input[name="focusAreas[]"]').prop('checked', false);
 }
@@ -78,7 +77,6 @@ function submitGoogleForm(event) {
         var annualIncome = $('input[name="gridRadios"]:checked').val();
         var rentMonthly = $('#rent').val();
         var debtTotal = $('#debt').val();
-        var basicFeedback = $('#basicFeedback').val();
         var comment = $('#comments').val().replace(/\n/g, '<br>');
         var focusAreas = [];
         $('input[name="focusAreas[]"]:checked').each(function() {
@@ -102,7 +100,6 @@ function submitGoogleForm(event) {
                 "annualIncome": annualIncome,
                 "rentMonthly": rentMonthly,
                 "debtTotal": debtTotal,
-                "basicFeedback": basicFeedback,
                 "focusAreas": focusAreas,
                 "comment": comment,
             }),
