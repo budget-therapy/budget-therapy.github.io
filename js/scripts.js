@@ -53,6 +53,7 @@ function resetGoogleForm() {
     $('#phonenumber').val("");
     $('#age').val("");
     $('#budgetingRating').val(5);
+    $('#sliderValue').text(5);
     $('input[name="gridRadios"]:first').prop('checked', true);
     $('#rent').val("");
     $('#debt').val("");
