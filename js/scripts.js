@@ -32,7 +32,14 @@ const formValidationMessage = `
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 `;
+const slider = document.getElementById("mySlider");
+const sliderValue = document.getElementById("sliderValue");
 
+if (slider && sliderValue) { // Check if elements exist before attaching event listener
+    slider.oninput = function() {
+        sliderValue.textContent = this.value;
+    }
+}
 
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
@@ -41,6 +48,7 @@ function resetGoogleForm() {
     $('#emailaddress').val("");
     $('#phonenumber').val("");
     $('#age').val("");
+    ('#budgetingRating').val("");
     $('input[name="gridRadios"]:first').prop('checked', true);
     $('#rent').val("");
     $('#debt').val("");
@@ -74,6 +82,7 @@ function submitGoogleForm(event) {
         var emailAddress = $('#emailaddress').val();
         var phoneNumber = $('#phonenumber').val();
         var age = $('#age').val();
+        var budgetingRating = $('#budgetingRating').val();
         var annualIncome = $('input[name="gridRadios"]:checked').val();
         var rentMonthly = $('#rent').val();
         var debtTotal = $('#debt').val();
@@ -97,6 +106,7 @@ function submitGoogleForm(event) {
                 "emailAddress": emailAddress,
                 "phoneNumber": phoneNumber,
                 "age": age,
+                "budgetingRating": budgetingRating,
                 "annualIncome": annualIncome,
                 "rentMonthly": rentMonthly,
                 "debtTotal": debtTotal,
