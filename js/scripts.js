@@ -45,6 +45,7 @@ function resetGoogleForm() {
     $('#rent').val("");
     $('#debt').val("");
     $('#comments').val("");
+    $('input[name="focusAreas[]"]').prop('checked', false);
 }
 
 
@@ -52,7 +53,7 @@ function resetGoogleForm() {
 function submitGoogleForm(event) {
     // Prevent Default Submit
     event.preventDefault();
-
+  
     // Bootstrap Form Validation
     var validJoinForm = false;
     const form = document.querySelectorAll('#join-show-form')[0];
@@ -64,7 +65,7 @@ function submitGoogleForm(event) {
         validJoinForm = true;
         form.classList.remove('was-validated');
     }
-
+  
     // If Bootstrap Form Input is Valid
     if (validJoinForm) {
         // Collect Inputs
@@ -73,16 +74,21 @@ function submitGoogleForm(event) {
         var emailAddress = $('#emailaddress').val();
         var phoneNumber = $('#phonenumber').val();
         var age = $('#age').val();
-        var annualIncome = $('input[name="gridRadios"]:checked').val();
         var rentMonthly = $('#rent').val();
         var debtTotal = $('#debt').val();
         var comment = $('#comments').val().replace(/\n/g, '<br>');
-
+  
+        // **Collect Selected Focus Areas:**
+        var focusAreas = []; // Empty array to store selected values
+        $('input[name="focusAreas[]"]:checked').each(function() {
+            focusAreas.push($(this).val());
+        });
+  
         // Disable submit button until complete
         $("#send-btn").prop("disabled", true);
         $("#send-btn").html("<div class='spinner-border text-light' style='vertical-align: middle; height: 1.5rem; width: 1.5rem;'></div>");
         $("#form-message").html("");
-
+  
         // Submit Google Form
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbzvbk8I4RAquhnUiFGfFYYzwQzDZ6WGfdd2uB2JH0ov6Y3nIcSZ5hUCrKZoR0L8-3UdXA/exec",
@@ -92,10 +98,9 @@ function submitGoogleForm(event) {
                 "emailAddress": emailAddress,
                 "phoneNumber": phoneNumber,
                 "age": age,
-                "annualIncome": annualIncome,
-                "rentMonthly": rentMonthly,
-                "debtTotal": debtTotal,
-                "comment": comment,
+                // ... other data as before ...
+                "focusAreas": focusAreas, // Add focusAreas to data
+                "comment": comment
             }),
             type: "POST",
             redirect: "follow",
@@ -119,6 +124,6 @@ function submitGoogleForm(event) {
             }
         });
     }
-
+  
     return false;
-}
+  }
