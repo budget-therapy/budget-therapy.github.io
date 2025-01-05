@@ -32,14 +32,18 @@ const formValidationMessage = `
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 `;
-const slider = document.getElementById("budgetingRating");
-const sliderValue = document.getElementById("sliderValue");
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById("budgetingRating");
+    const sliderValue = document.getElementById("sliderValue");
 
-if (slider && sliderValue) { // Check if elements exist before attaching event listener
-    slider.oninput = function() {
-        sliderValue.textContent = this.value;
+    if (slider && sliderValue) {
+        sliderValue.textContent = slider.value; // Set initial value
+
+        slider.oninput = function() {
+            sliderValue.textContent = this.value;
+        };
     }
-}
+});
 
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
