@@ -32,7 +32,7 @@ const formValidationMessage = `
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 `;
-const slider = document.getElementById("mySlider");
+const slider = document.getElementById("budgetingRating");
 const sliderValue = document.getElementById("sliderValue");
 
 if (slider && sliderValue) { // Check if elements exist before attaching event listener
