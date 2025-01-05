@@ -12718,22 +12718,22 @@ header.masthead {
   overflow: hidden;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
-  background-image: linear-gradient(0deg, #000000 0%, #342e2e 100%), url('/assets/img/masthead-small.png');
+  background-image: url('/assets/img/masthead-small.png'); /* Only the image */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-blend-mode: overlay;
+  /* Removed background-blend-mode */
 }
 
 @media (min-width: 768px) {
   header.masthead {
-      background-image: linear-gradient(0deg, #000000 0%, #342e2e 100%), url('/assets/img/masthead-medium.png');
+      background-image: url('/assets/img/masthead-medium.png');
   }
 }
 
 @media (min-width: 1200px) {
   header.masthead {
-      background-image: linear-gradient(0deg, #000000 0%, #342e2e 100%), url('/assets/img/masthead.png');
+      background-image: url('/assets/img/masthead.png');
   }
 }
 
