@@ -22,7 +22,7 @@ const successMessage = `
 `;
 const errorMessage = `
 <div id="google-form-error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-    Sorry! There was an error submitting this form, please try sending us an email at <span style="white-space:nowrap;"><a href="mailto:nic@budget-therapy.com" class="alert-link">nic@budget-therapy.com</a></span>
+    Sorry! There was an error submitting this form, please try sending us an email at <span style="white-space:nowrap;"><a href="mailto:interviews@budget-therapy.com" class="alert-link">interviews@budget-therapy.com</a></span>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 `;
