@@ -198,6 +198,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Character countdown for open text box
+document.addEventListener('DOMContentLoaded', function() {
+    const commentsInput = document.getElementById('comments');
+    const commentsCount = document.getElementById('comments-count');
+
+    if (commentsInput && commentsCount) {
+        commentsInput.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            const maxLength = this.maxLength;
+            commentsCount.textContent = currentLength + " / " + maxLength + " characters";
+
+            if (currentLength > maxLength) {
+                this.value = this.value.slice(0, maxLength); // Truncate if they somehow exceed limit
+                commentsCount.classList.add("text-danger");
+            } else {
+                commentsCount.classList.remove("text-danger");
+            }
+        });
+    } else {
+        console.error("Comments input or counter element not found!");
+    }
+});
+
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
     $('#firstname').val("");
