@@ -12762,7 +12762,7 @@ html {
 .navbar-custom {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .navbar-custom .navbar-brand {
@@ -12784,7 +12784,7 @@ header.masthead {
   overflow: hidden;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
-  background-image: url('/assets/img/masthead-small.png'); /* Only the image */
+  background-image: url('/assets/img/masthead-small.webp'); /* Only the image */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -12793,13 +12793,13 @@ header.masthead {
 
 @media (min-width: 768px) {
   header.masthead {
-      background-image: url('/assets/img/masthead-medium.png');
+    background-image: url('/assets/img/masthead-medium.webp');
   }
 }
 
 @media (min-width: 1200px) {
   header.masthead {
-      background-image: url('/assets/img/masthead.png');
+    background-image: url('/assets/img/masthead.webp');
   }
 }
 
