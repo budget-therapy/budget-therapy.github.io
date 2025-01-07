@@ -108,6 +108,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// email checker
+document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.getElementById('emailaddress');
+    const form = emailInput?.closest('form');
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                //If the form is invalid, prevent submission
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+              //If the form is valid, continue with submission
+              console.log("Form submitted with email:", emailInput.value)
+            }
+        });
+    } else {
+        console.error("Form element not found!");
+    }
+});
 
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
