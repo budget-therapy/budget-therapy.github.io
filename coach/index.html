@@ -265,20 +265,16 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="phonenumber" class="form-label">Phone Number <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="phonenumber" required="" maxlength="1000">
+                                <label for="phonenumber" class="form-label">Phone Number <span class="text-required">*</span></label>
+                                <input type="tel" class="form-control" id="phonenumber" name="phonenumber" inputmode="numeric" pattern="[0-9]{10}" required>
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a phone number.
-                                </div>
+                                <div class="invalid-feedback">Please provide a valid 10-digit phone number.</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="age" class="form-label">Age <span class=text-required>*</span></label>
-                                <input type="number" step="1" class="form-control" id="age" required="" maxlength="1000">
+                                <label for="age" class="form-label">Age <span class="text-required">*</span></label>
+                                <input type="text" class="form-control" id="age" name="age" maxlength="2" inputmode="numeric" pattern="[0-9]*">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a round number.
-                                </div>
+                                <div class="invalid-feedback">Please provide a two-digit number.</div>
                             </div>
                             <div class="col-md-6 slider-container">
                                 <div><label for="budgetingRating">Rate your budgeting skills (1-10):</label></div>
