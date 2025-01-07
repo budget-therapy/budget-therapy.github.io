@@ -143,6 +143,40 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Rent and Debt requirements
+document.addEventListener('DOMContentLoaded', function() {
+    const rentInput = document.getElementById('rent');
+    const debtInput = document.getElementById('debt');
+    const form = rentInput?.closest('form') || debtInput?.closest('form');
+
+    function filterNumbersAndHyphens(inputElement) {
+        if (inputElement) {
+            inputElement.addEventListener('input', function(event) {
+                this.value = this.value.replace(/[^0-9\-]/g, ''); // Remove anything not a number or hyphen
+            });
+        } else {
+            console.error(inputElement.id + " input element not found!");
+        }
+    }
+
+    filterNumbersAndHyphens(rentInput);
+    filterNumbersAndHyphens(debtInput);
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          } else {
+            console.log("Form submitted with rent:", rentInput.value)
+            console.log("Form submitted with debt:", debtInput.value)
+          }
+        });
+    } else {
+        console.error("Form element not found!");
+    }
+});
+
 // Email checker
 document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('emailaddress');
