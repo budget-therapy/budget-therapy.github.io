@@ -45,6 +45,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Naming requirements - no special characters or numbers
+document.addEventListener('DOMContentLoaded', function() {
+    const firstNameInput = document.getElementById('firstname');
+    const lastNameInput = document.getElementById('lastname');
+    const form = firstNameInput?.closest('form') || lastNameInput?.closest('form');
+
+    function filterNonLetters(inputElement) {
+        if (inputElement) {
+            inputElement.addEventListener('input', function(event) {
+                this.value = this.value.replace(/[^A-Za-z\s\-\']/g, ''); // Remove anything not a letter, space, hyphen, or apostrophe
+            });
+        } else {
+            console.error(inputElement.id + " input element not found!");
+        }
+    }
+
+    filterNonLetters(firstNameInput);
+    filterNonLetters(lastNameInput);
+
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+              console.log("Form submitted with firstName:", firstNameInput.value)
+              console.log("Form submitted with lastName:", lastNameInput.value)
+            }
+        });
+    } else {
+        console.error("Form element not found!");
+    }
+});
+
 // Numbering requirements
 document.addEventListener('DOMContentLoaded', function() {
     const phonenumberInput = document.getElementById('phonenumber');
@@ -108,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// email checker
+// Email checker
 document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('emailaddress');
     const form = emailInput?.closest('form');

@@ -240,29 +240,22 @@
 
                         <form class="row g-3 needs-validation" id="join-show-form" style="margin-bottom: 50px;background-color: #e7e7e7;border-radius: 8px;padding-left: 0.5rem;padding-right:0.5rem;" onsubmit="return submitGoogleForm(event)" novalidate="">
                             <div class="col-md-6">
-                                <label for="firstname" class="form-label">First Name <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="firstname" value="" required="" maxlength="1000">
+                                <label for="firstname" class="form-label">First Name <span class="text-required">*</span></label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" required maxlength="1000" pattern="[A-Za-z\s\-']+">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a first name.
-                                </div>
+                                <div class="invalid-feedback">Please provide a valid first name (letters, spaces, hyphens, and apostrophes only).</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="lastname" class="form-label">Last Name <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="lastname" value="" required="" maxlength="1000">
+                                <label for="lastname" class="form-label">Last Name <span class="text-required">*</span></label>
+                                <input type="text" class="form-control" id="lastname" name="lastname" required maxlength="1000" pattern="[A-Za-z\s\-']+">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a last name.
-                                </div>
+                                <div class="invalid-feedback">Please provide a valid last name (letters, spaces, hyphens, and apostrophes only).</div>
                             </div>
-
                             <div class="col-md-6">
-                                <label for="emailaddress" class="form-label">Email Address <span class=text-required>*</span></label>
-                                <input type="text" class="form-control" id="emailaddress" value="" required="" maxlength="1000">
+                                <label for="emailaddress" class="form-label">Email Address <span class="text-required">*</span></label>
+                                <input type="email" class="form-control" id="emailaddress" name="emailaddress" required maxlength="1000">
                                 <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please provide a valid email address.
-                                </div>
+                                <div class="invalid-feedback">Please provide a valid email address.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="phonenumber" class="form-label">Phone Number <span class="text-required">*</span></label>
