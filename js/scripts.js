@@ -132,79 +132,81 @@ function submitGoogleForm(event) {
     // Prevent Default Submit
     event.preventDefault();
 
+    // Get form and button elements
+    const form = document.querySelector('#join-show-form');
+    const sendBtn = document.getElementById('send-btn');
+
+    if (!form || !sendBtn) {
+        console.error("Form or send button not found.");
+        return; // Important: Exit early if elements are not found
+    }
+
     // Bootstrap Form Validation
-    var validJoinForm = false;
-    const form = document.querySelectorAll('#join-show-form')[0];
     if (!form.checkValidity()) {
-        validJoinForm = false;
         form.classList.add('was-validated');
         $("#form-message").html(formValidationMessage);
+        return;
     } else {
-        validJoinForm = true;
         form.classList.remove('was-validated');
-    }
-
-    // If Bootstrap Form Input is Valid
-    if (validJoinForm) {
-        // Collect Inputs
-        var firstName = $('#firstname').val();
-        var lastName = $('#lastname').val();
-        var emailAddress = $('#emailaddress').val();
-        var phoneNumber = $('#phonenumber').val();
-        var age = $('#age').val();
-        var budgetingRating = $('#budgetingRating').val();
-        var annualIncome = $('input[name="gridRadios"]:checked').val();
-        var rentMonthly = $('#rent').val();
-        var debtTotal = $('#debt').val();
-        var comment = $('#comments').val().replace(/\n/g, '<br>');
-        var focusAreas = [];
-        $('input[name="focusAreas[]"]:checked').each(function() {
-            focusAreas.push($(this).val());
-        });
-
-        // Disable submit button until complete
-        $("#send-btn").prop("disabled", true);
-        $("#send-btn").html("<div class='spinner-border text-light' style='vertical-align: middle; height: 1.5rem; width: 1.5rem;'></div>");
         $("#form-message").html("");
-
-        // Submit Google Form
-        $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec",
-            data: JSON.stringify({
-                "firstName": firstName,
-                "lastName": lastName,
-                "emailAddress": emailAddress,
-                "phoneNumber": phoneNumber,
-                "age": age,
-                "budgetingRating": budgetingRating,
-                "annualIncome": annualIncome,
-                "rentMonthly": rentMonthly,
-                "debtTotal": debtTotal,
-                "focusAreas": focusAreas,
-                "comment": comment,
-            }),
-            type: "POST",
-            redirect: "follow",
-            contentType: 'text/plain;charset=utf-8',
-            complete: function (e, xhr, settings) {
-                if (e.status === 200) {
-                    if (e.responseJSON.result === "success") {
-                        $("#form-message").html(successMessage);
-                        resetGoogleForm();
-                    } else {
-                        $("#form-message").html(errorMessage);
-                        // Don't reset form on failure
-                    }
-                } else {
-                    $("#form-message").html(errorMessage);
-                    // Don't reset form on failure
-                }
-                // Re-enable submit button
-                $("#send-btn").html("Send");
-                $("#send-btn").prop("disabled", false);
-            }
-        });
     }
+
+    // Disable submit button and change text
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Sending..."; // Change button text
+
+    // Collect Inputs
+    var firstName = $('#firstname').val();
+    var lastName = $('#lastname').val();
+    var emailAddress = $('#emailaddress').val();
+    var phoneNumber = $('#phonenumber').val();
+    var age = $('#age').val();
+    var budgetingRating = $('#budgetingRating').val();
+    var annualIncome = $('input[name="gridRadios"]:checked').val();
+    var rentMonthly = $('#rent').val();
+    var debtTotal = $('#debt').val();
+    var comment = $('#comments').val().replace(/\n/g, '<br>');
+    var focusAreas = [];
+    $('input[name="focusAreas[]"]:checked').each(function() {
+        focusAreas.push($(this).val());
+    });
+
+            // Submit Google Form
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec",
+        data: JSON.stringify({
+            "firstName": firstName,
+            "lastName": lastName,
+            "emailAddress": emailAddress,
+            "phoneNumber": phoneNumber,
+            "age": age,
+            "budgetingRating": budgetingRating,
+            "annualIncome": annualIncome,
+            "rentMonthly": rentMonthly,
+            "debtTotal": debtTotal,
+            "focusAreas": focusAreas,
+            "comment": comment,
+        }),
+        type: "POST",
+        redirect: "follow",
+        contentType: 'text/plain;charset=utf-8',
+        success: function(response) {
+            if (response.result === "success") {
+                $("#form-message").html(successMessage);
+                resetGoogleForm();
+            } else {
+                $("#form-message").html(errorMessage);
+            }
+        },
+        error: function() {
+            $("#form-message").html(errorMessage);
+        },
+        complete: function() {
+            // Re-enable submit button and restore text
+            sendBtn.disabled = false;
+            sendBtn.textContent = "Send";
+        }
+    });
 
     return false;
 }
