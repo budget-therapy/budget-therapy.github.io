@@ -45,6 +45,70 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Numbering requirements
+document.addEventListener('DOMContentLoaded', function() {
+    const phonenumberInput = document.getElementById('phonenumber');
+    const ageInput = document.getElementById('age');
+    const form = phonenumberInput?.closest('form') || ageInput?.closest('form'); // Get the form, handling cases where one input might not exist
+
+    if (phonenumberInput) {
+        phonenumberInput.addEventListener('input', function(event) {
+            this.value = this.value.replace(/\D/g, '');
+            if (this.value.length > 9) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+    } else {
+        console.error("Phone number input element not found!");
+    }
+
+    if (ageInput) {
+        ageInput.addEventListener('input', function(event) {
+            this.value = this.value.replace(/\D/g, '');
+            if (this.value.length > 2) {
+                this.value = this.value.slice(0, 2);
+            }
+        });
+    } else {
+        console.error("Age input element not found!");
+    }
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            let isValid = true; // Use a flag to track overall form validity
+
+            const phonenumberValue = phonenumberInput?.value;
+            const ageValue = ageInput?.value;
+
+            if (!phonenumberValue || phonenumberValue.length !== 10) {
+                alert("Please enter a valid 10-digit phone number.");
+                isValid = false;
+            } else if (isNaN(phonenumberValue)) {
+                alert("Please enter a valid phone number.");
+                isValid = false;
+            }
+
+            if (!ageValue || ageValue.length !== 2) {
+                alert("Please enter a valid 2-digit age.");
+                isValid = false;
+            } else if (isNaN(ageValue)) {
+                alert("Please enter a valid age.");
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if not valid
+            } else {
+                console.log("Form submitted with phone number:", phonenumberValue);
+                console.log("Form submitted with age:", ageValue);
+            }
+        });
+    } else {
+        console.error("Form element not found!");
+    }
+});
+
+
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
     $('#firstname').val("");
