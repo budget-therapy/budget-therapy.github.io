@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (phonenumberInput) {
         phonenumberInput.addEventListener('input', function(event) {
             this.value = this.value.replace(/\D/g, '');
-            if (this.value.length > 9) {
+            if (this.value.length > 10) {
                 this.value = this.value.slice(0, 10);
             }
         });
