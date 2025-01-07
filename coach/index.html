@@ -351,9 +351,11 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="comments" class="form-label">Tell us about your current financial situation and your financial goals - ie what would you like our guidance on? </label>
-                                <textarea class="form-control" id="comments" name="comments" maxlength="1000" rows="3"></textarea>
-                                <div id="comments-count" class="form-text text-muted">0 / 1000 characters</div>
+                                <label for="comments" class="form-label">Tell us about your current financial situation and your financial goals - ie what would you like our guidance on? <span class="text-required">*</span></label>
+                                <textarea class="form-control" aria-label="Comments" id="comments" name="comments" required maxlength="10000" rows="5"></textarea>
+                                <div id="comments-count" class="form-text text-muted">0 / 10000 characters</div>
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">Please provide your comments.</div>
                             </div>
 
                             <div class="col-12">
