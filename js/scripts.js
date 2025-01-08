@@ -236,6 +236,7 @@ function resetGoogleForm() {
     $('#comments').val("");
     $('input[name="focusAreas[]"]').prop('checked', false);
     $('#creatingBudgetCheck').prop('checked', true);
+    updateCharacterCount(document.getElementById('comments'), document.getElementById('comments-count'));
 }
 
 
