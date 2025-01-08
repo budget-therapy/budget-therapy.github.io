@@ -200,30 +200,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Character countdown for open text box
 document.addEventListener('DOMContentLoaded', function() {
-
-    function updateCharacterCount(inputElement, counterElement) {
-        if (inputElement && counterElement) { // Check if elements exist
-            const currentLength = inputElement.value.length;
-            const maxLength = inputElement.maxLength;
-            counterElement.textContent = currentLength + " / " + maxLength + " characters";
-
-            if (currentLength > maxLength) {
-                inputElement.value = inputElement.value.slice(0, maxLength);
-                counterElement.classList.add("text-danger");
-            } else {
-                counterElement.classList.remove("text-danger");
-            }
-        }
-    }
-
     const commentsInput = document.getElementById('comments');
     const commentsCount = document.getElementById('comments-count');
 
     if (commentsInput && commentsCount) {
         commentsInput.addEventListener('input', function() {
-            updateCharacterCount(this, commentsCount);
+            const currentLength = this.value.length;
+            const maxLength = this.maxLength;
+            commentsCount.textContent = currentLength + " / " + maxLength + " characters";
+
+            if (currentLength > maxLength) {
+                this.value = this.value.slice(0, maxLength); // Truncate if they somehow exceed limit
+                commentsCount.classList.add("text-danger");
+            } else {
+                commentsCount.classList.remove("text-danger");
+            }
         });
-        updateCharacterCount(commentsInput, commentsCount);
     } else {
         console.error("Comments input or counter element not found!");
     }
@@ -244,7 +236,6 @@ function resetGoogleForm() {
     $('#comments').val("");
     $('input[name="focusAreas[]"]').prop('checked', false);
     $('#creatingBudgetCheck').prop('checked', true);
-    updateCharacterCount(document.getElementById('comments'), document.getElementById('comments-count'));
 }
 
 
