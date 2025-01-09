@@ -276,11 +276,11 @@ function submitGoogleForm(event) {
     var emailAddress = $('#emailaddress').val();
     var phoneNumber = $('#phonenumber').val();
     var age = $('#age').val();
-    var age = $('#socialMediaHandles').val();
-    var age = $('#occupation').val();
+    var socialMediaHandles = $('#socialMediaHandles').val();
+    var occupation = $('#occupation').val();
     var budgetingRating = $('#budgetingRating').val();
     var annualIncome = $('input[name="gridRadios"]:checked').val();
-    var annualIncome = $('input[name="inDenver"]:checked').val();
+    var inDenver = $('input[name="inDenver"]:checked').val();
     var rentMonthly = $('#rent').val();
     var debtTotal = $('#debt').val();
     var comment = $('#comments').val().replace(/\n/g, '<br>');
@@ -293,11 +293,14 @@ function submitGoogleForm(event) {
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec",
         data: JSON.stringify({
+            "inDenver": inDenver,
             "firstName": firstName,
             "lastName": lastName,
             "emailAddress": emailAddress,
             "phoneNumber": phoneNumber,
             "age": age,
+            "age": socialMediaHandles,
+            "age": occupation,
             "budgetingRating": budgetingRating,
             "annualIncome": annualIncome,
             "rentMonthly": rentMonthly,
