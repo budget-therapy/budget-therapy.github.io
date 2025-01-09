@@ -244,6 +244,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Phone number auto-formatting
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneInput = document.getElementById('phonenumber');
+
+    phoneInput.addEventListener('input', function(event) {
+        let input = this.value.replace(/\D/g, ''); // Remove non-digits
+        let formatted = input;
+
+        if (input.length > 0) {
+            if (input.length > 3) {
+                formatted = `(${input.substring(0, 3)}) ${input.substring(3)}`;
+            }
+            if (input.length > 6) {
+                formatted = `(${input.substring(0, 3)}) ${input.substring(3, 6)}-${input.substring(6)}`;
+            }
+        }
+
+        this.value = formatted;
+        // Check for validity after formatting
+        if (input.length === 10) {
+            this.setCustomValidity(""); // Valid
+        } else {
+            this.setCustomValidity("Please provide a valid 10-digit phone number."); // Invalid
+        }
+    });
+});
+
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
     $('#firstname').val("");
