@@ -232,10 +232,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const words = text.split(/\s+/).filter(word => word !== ""); // Split by spaces and filter out empty strings
         const wordCount = words.length;
 
-        commentsWordCount.textContent = `${wordCount} / 20 words`;
+        commentsWordCount.textContent = `${wordCount} / 30 words`;
 
-        if (wordCount < 20) {
-          commentsTextarea.setCustomValidity("Please enter at least 20 words.");
+        if (wordCount < 30) {
+          commentsTextarea.setCustomValidity("Please enter at least 30 words.");
           minWordFeedback.style.display = "block"; // Show the feedback
         } else {
             commentsTextarea.setCustomValidity(""); // Reset custom validity
