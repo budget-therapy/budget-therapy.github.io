@@ -221,6 +221,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Minimum word count on comment box
+document.addEventListener('DOMContentLoaded', function() {
+    const commentsTextarea = document.getElementById('comments');
+    const commentsWordCount = document.getElementById('comments-word-count');
+    const minWordFeedback = document.getElementById('min-word-feedback');
+
+    commentsTextarea.addEventListener('input', function() {
+        const text = this.value.trim();
+        const words = text.split(/\s+/).filter(word => word !== ""); // Split by spaces and filter out empty strings
+        const wordCount = words.length;
+
+        commentsWordCount.textContent = `${wordCount} / 20 words`;
+
+        if (wordCount < 20) {
+          commentsTextarea.setCustomValidity("Please enter at least 20 words.");
+          minWordFeedback.style.display = "block"; // Show the feedback
+        } else {
+            commentsTextarea.setCustomValidity(""); // Reset custom validity
+            minWordFeedback.style.display = "none"; // Hide the feedback
+        }
+    });
+});
+
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
     $('#firstname').val("");
@@ -289,7 +312,7 @@ function submitGoogleForm(event) {
         focusAreas.push($(this).val());
     });
 
-            // Submit Google Form
+// Submit Google Form
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec",
         data: JSON.stringify({
