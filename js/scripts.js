@@ -388,7 +388,7 @@ async function submitGoogleForm(event) {
     };
   
     try {
-      const response = await fetch("YOUR_APPS_SCRIPT_WEB_APP_URL", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
