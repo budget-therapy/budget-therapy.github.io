@@ -213,6 +213,22 @@
                         <p style="margin-bottom: 2rem;">Are you in the greater Denver area and passionate about sharing your financial journey? We're looking for local guests to join our podcast, share their stories, and help inspire others. Whether you're just starting out or you're just looking to further your skillset, your experience could make a difference. Reach out and become part of our growing community!</p>
                         
                         <form class="row g-3 needs-validation" id="join-show-form" style="margin-bottom: 50px;background-color: #e7e7e7;border-radius: 8px;padding-left: 0.5rem;padding-right:0.5rem;" onsubmit="return submitGoogleForm(event)" novalidate="">
+                            <div class="col-12">
+                                <div class="form-label">Are you in the greater Denver area? <span class=text-required>*</span></div>
+                                <div class="clear"></div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inDenver" id="inDenverYes" value="Yes" checked>
+                                    <label class="form-check-label" for="inDenver">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inDenver" id="inDenverNo" value="No">
+                                    <label class="form-check-label" for="inDenverNo">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <label for="firstname" class="form-label">First Name <span class="text-required">*</span></label>
                                 <input type="text" class="form-control" id="firstname" name="firstname" required maxlength="1000" pattern="[A-Za-z\s\-']+">
@@ -231,6 +247,13 @@
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide a valid email address.</div>
                             </div>
+                            <div class="col-md-6 slider-container">
+                                <div><label for="budgetingRating">Rate your budgeting skills (1-10):</label></div>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="budgetingRating" name="budgetingRating" min="1" max="10" value="5">
+                                    <span id="sliderValue">5</span>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <label for="phonenumber" class="form-label">Phone Number <span class="text-required">*</span></label>
                                 <input type="tel" class="form-control" id="phonenumber" name="phonenumber" inputmode="numeric" pattern="[0-9]{10}" required>
@@ -243,14 +266,19 @@
                                 <div class="valid-feedback">Looks Good!</div>
                                 <div class="invalid-feedback">Please provide a two-digit number.</div>
                             </div>
-                            <div class="col-md-6 slider-container">
-                                <div><label for="budgetingRating">Rate your budgeting skills (1-10):</label></div>
-                                <div class="slider-wrapper">
-                                    <input type="range" id="budgetingRating" name="budgetingRating" min="1" max="10" value="5">
-                                    <span id="sliderValue">5</span>
-                                </div>
+                            <div class="col-md-6">
+                                <label for="socialMediaHandles" class="form-label">Social Media Handles? <span class="text-required">*</span></label>
+                                <input type="text" class="form-control" id="socialMediaHandles" name="socialMediaHandles" required maxlength="1000">
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">Please provide any social media handles you have.</div>
                             </div>
-                            
+                            <div class="col-md-6">
+                                <label for="occupation" class="form-label">Occupation? <span class="text-required">*</span></label>
+                                <input type="text" class="form-control" id="occupation" name="occupation" required maxlength="1000">
+                                <div class="valid-feedback">Looks Good!</div>
+                                <div class="invalid-feedback">Please provide your job title/industry.</div>
+                            </div>
+
                             <div class="col-12">
                                 <div class="form-label">Annual Income <span class=text-required>*</span></div>
                                 <div class="clear"></div>

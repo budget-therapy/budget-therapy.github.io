@@ -227,10 +227,13 @@ function resetGoogleForm() {
     $('#lastname').val("");
     $('#emailaddress').val("");
     $('#phonenumber').val("");
-    $('#age').val("");
+    $('#age').val("");    
+    $('#socialMediaHandles').val("");
+    $('#occupation').val("");
     $('#budgetingRating').val(5);
     $('#sliderValue').text(5);
     $('input[name="gridRadios"]:first').prop('checked', true);
+    $('input[name="inDenver"]:first').prop('checked', true);
     $('#rent').val("");
     $('#debt').val("");
     $('#comments').val("");
@@ -273,8 +276,11 @@ function submitGoogleForm(event) {
     var emailAddress = $('#emailaddress').val();
     var phoneNumber = $('#phonenumber').val();
     var age = $('#age').val();
+    var age = $('#socialMediaHandles').val();
+    var age = $('#occupation').val();
     var budgetingRating = $('#budgetingRating').val();
     var annualIncome = $('input[name="gridRadios"]:checked').val();
+    var annualIncome = $('input[name="inDenver"]:checked').val();
     var rentMonthly = $('#rent').val();
     var debtTotal = $('#debt').val();
     var comment = $('#comments').val().replace(/\n/g, '<br>');
