@@ -221,61 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
-
-
-async function uploadImage(file) {
-    const uploadStatus = document.getElementById('uploadStatus');
-
-    if (!file) {
-        uploadStatus.textContent = "Please select a file.";
-        return null;
-    }
-
-    const randomFilename = generateRandomFilename(file.name); // Generate random filename
-
-    const formData = new FormData();
-    formData.append('file', file, randomFilename); // Use random filename here
-
-    try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`HTTP error ${response.status}: ${errorText}`);
-        }
-
-        const data = await response.json();
-
-        if (data.result === "success") {
-            uploadStatus.textContent = "File uploaded successfully!";
-            return data.fileId;
-        } else {
-            uploadStatus.textContent = data.message || "Upload failed.";
-            return null;
-        }
-    } catch (error) {
-        console.error("Upload error:", error);
-        uploadStatus.textContent = "An error occurred during upload: " + error.message;
-        return null;
-    }
-}
-
-function generateRandomFilename(originalFilename) {
-    const timestamp = Date.now();
-    const randomString = Math.random().toString(36).substring(2, 15); // Generate a random string
-    const extension = originalFilename.substring(originalFilename.lastIndexOf('.')); // Get file extension
-
-    return `${timestamp}-${randomString}${extension}`; // Combine timestamp, random string, and extension
-}
-
-
-
-
-
 // Reset Google Form Fields on Success
 function resetGoogleForm() {
     $('#firstname').val("");
@@ -298,122 +243,91 @@ function resetGoogleForm() {
 
 
 // Submit Google Form
-async function submitGoogleForm(event) {
-    // Prevent default form submission
+function submitGoogleForm(event) {
+    // Prevent Default Submit
     event.preventDefault();
-  
+
     // Get form and button elements
     const form = document.querySelector('#join-show-form');
     const sendBtn = document.getElementById('send-btn');
-  
-    // Check if form and button elements exist
+
     if (!form || !sendBtn) {
-      console.error("Form or send button not found.");
-      return; // Exit early if not found
+        console.error("Form or send button not found.");
+        return; // Important: Exit early if elements are not found
     }
-  
-    // Bootstrap form validation (assuming form has 'was-validated' class)
+
+    // Bootstrap Form Validation
     if (!form.checkValidity()) {
-      form.classList.add('was-validated');
-      $("#form-message").html(formValidationMessage);
-      return; // Exit if validation fails
+        form.classList.add('was-validated');
+        $("#form-message").html(formValidationMessage);
+        return;
     } else {
-      form.classList.remove('was-validated');
-      $("#form-message").html("");
+        form.classList.remove('was-validated');
+        $("#form-message").html("");
     }
-  
+
     // Disable submit button and change text
     sendBtn.disabled = true;
-    sendBtn.textContent = "Sending...";
-  
-    // Collect form data
-    const firstName = $('#firstname').val();
-    const lastName = $('#lastname').val();
-    const emailAddress = $('#emailaddress').val();
-    const phoneNumber = $('#phonenumber').val();
-    const age = $('#age').val();
-    const socialMediaHandles = $('#socialMediaHandles').val();
-    const occupation = $('#occupation').val();
-    const budgetingRating = $('#budgetingRating').val();
-    const annualIncome = $('input[name="gridRadios"]:checked').val();
-    const inDenver = $('input[name="inDenver"]:checked').val();
-    const rentMonthly = $('#rent').val();
-    const debtTotal = $('#debt').val();
-    const comment = $('#comments').val().replace(/\n/g, '<br>');
-    const focusAreas = [];
+    sendBtn.textContent = "Sending..."; // Change button text
+
+    // Collect Inputs
+    var firstName = $('#firstname').val();
+    var lastName = $('#lastname').val();
+    var emailAddress = $('#emailaddress').val();
+    var phoneNumber = $('#phonenumber').val();
+    var age = $('#age').val();
+    var socialMediaHandles = $('#socialMediaHandles').val();
+    var occupation = $('#occupation').val();
+    var budgetingRating = $('#budgetingRating').val();
+    var annualIncome = $('input[name="gridRadios"]:checked').val();
+    var inDenver = $('input[name="inDenver"]:checked').val();
+    var rentMonthly = $('#rent').val();
+    var debtTotal = $('#debt').val();
+    var comment = $('#comments').val().replace(/\n/g, '<br>');
+    var focusAreas = [];
     $('input[name="focusAreas[]"]:checked').each(function() {
-      focusAreas.push($(this).val());
+        focusAreas.push($(this).val());
     });
-  
-    // Handle file upload (assuming file input ID is 'fileInput')
-    const fileInput = document.getElementById('fileInput');
-    const file = fileInput.files[0];
-    let fileId = null;
-  
-    if (file) {
-      try {
-        fileId = await uploadImage(file); // Upload the image and get the file ID
-        if (!fileId) {
-          $("#form-message").html("Image upload failed.");
-          sendBtn.disabled = false;
-          sendBtn.textContent = "Send";
-          return; // Exit if upload fails
-        }
-      } catch (error) {
-        console.error("Upload error:", error);
-        $("#form-message").html("An error occurred during upload.");
-        sendBtn.disabled = false;
-        sendBtn.textContent = "Send";
-        return; // Exit on upload error
-      }
-    }
-  
-    // Submit form data to Google Apps Script
-    const formData = {
-      "inDenver": inDenver,
-      "firstName": firstName,
-      "lastName": lastName,
-      "emailAddress": emailAddress,
-      "phoneNumber": phoneNumber,
-      "age": age,
-      "socialMediaHandles": socialMediaHandles,
-      "occupation": occupation,
-      "budgetingRating": budgetingRating,
-      "annualIncome": annualIncome,
-      "rentMonthly": rentMonthly,
-      "debtTotal": debtTotal,
-      "focusAreas": focusAreas,
-      "fileId": fileId, // Include fileId if uploaded
-      "comment": comment,
-    };
-  
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+
+            // Submit Google Form
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec",
+        data: JSON.stringify({
+            "inDenver": inDenver,
+            "firstName": firstName,
+            "lastName": lastName,
+            "emailAddress": emailAddress,
+            "phoneNumber": phoneNumber,
+            "age": age,
+            "socialMediaHandles": socialMediaHandles,
+            "occupation": occupation,
+            "budgetingRating": budgetingRating,
+            "annualIncome": annualIncome,
+            "rentMonthly": rentMonthly,
+            "debtTotal": debtTotal,
+            "focusAreas": focusAreas,
+            "comment": comment,
+        }),
+        type: "POST",
+        redirect: "follow",
+        contentType: 'text/plain;charset=utf-8',
+        success: function(response) {
+            if (response.result === "success") {
+                $("#form-message").html(successMessage);
+                resetGoogleForm();
+            } else {
+                $("#form-message").html(errorMessage);
+            }
         },
-        body: JSON.stringify(formData)
-      });
-  
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP error ${response.status}: ${errorText}`);
-      }
-  
-      const data = await response.json();
-  
-      if (data.result === "success") {
-        $("#form-message").html(successMessage);
-        resetGoogleForm();
-      } else {
-        $("#form-message").html(errorMessage);
-      }
-    } catch (error) {
-      console.error("Fetch error:", error);
-      $("#form-message").html(errorMessage);
-    } finally {
-      sendBtn.disabled = false;
-      sendBtn.textContent = "Send";
-    }
-  }
+        error: function() {
+            $("#form-message").html(errorMessage);
+        },
+        complete: function() {
+            // Re-enable submit button and restore text
+            sendBtn.disabled = false;
+            sendBtn.textContent = "Send";
+        }
+    });
+
+    return false;
+}
