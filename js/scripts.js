@@ -299,23 +299,24 @@ function resetGoogleForm() {
 
 // Submit Google Form
 async function submitGoogleForm(event) {
-    // Prevent Default Submit
+    // Prevent default form submission
     event.preventDefault();
   
     // Get form and button elements
     const form = document.querySelector('#join-show-form');
     const sendBtn = document.getElementById('send-btn');
   
+    // Check if form and button elements exist
     if (!form || !sendBtn) {
       console.error("Form or send button not found.");
-      return; // Important: Exit early if elements are not found
+      return; // Exit early if not found
     }
   
-    // Bootstrap Form Validation
+    // Bootstrap form validation (assuming form has 'was-validated' class)
     if (!form.checkValidity()) {
       form.classList.add('was-validated');
       $("#form-message").html(formValidationMessage);
-      return;
+      return; // Exit if validation fails
     } else {
       form.classList.remove('was-validated');
       $("#form-message").html("");
@@ -323,88 +324,96 @@ async function submitGoogleForm(event) {
   
     // Disable submit button and change text
     sendBtn.disabled = true;
-    sendBtn.textContent = "Sending..."; // Change button text
+    sendBtn.textContent = "Sending...";
   
-    // Collect Inputs
-    var firstName = $('#firstname').val();
-    var lastName = $('#lastname').val();
-    var emailAddress = $('#emailaddress').val();
-    var phoneNumber = $('#phonenumber').val();
-    var age = $('#age').val();
-    var socialMediaHandles = $('#socialMediaHandles').val();
-    var occupation = $('#occupation').val();
-    var budgetingRating = $('#budgetingRating').val();
-    var annualIncome = $('input[name="gridRadios"]:checked').val();
-    var inDenver = $('input[name="inDenver"]:checked').val();
-    var rentMonthly = $('#rent').val();
-    var debtTotal = $('#debt').val();
-    var comment = $('#comments').val().replace(/\n/g, '<br>');
-    var focusAreas = [];
+    // Collect form data
+    const firstName = $('#firstname').val();
+    const lastName = $('#lastname').val();
+    const emailAddress = $('#emailaddress').val();
+    const phoneNumber = $('#phonenumber').val();
+    const age = $('#age').val();
+    const socialMediaHandles = $('#socialMediaHandles').val();
+    const occupation = $('#occupation').val();
+    const budgetingRating = $('#budgetingRating').val();
+    const annualIncome = $('input[name="gridRadios"]:checked').val();
+    const inDenver = $('input[name="inDenver"]:checked').val();
+    const rentMonthly = $('#rent').val();
+    const debtTotal = $('#debt').val();
+    const comment = $('#comments').val().replace(/\n/g, '<br>');
+    const focusAreas = [];
     $('input[name="focusAreas[]"]:checked').each(function() {
-        focusAreas.push($(this).val());
-
-  // Handle File Upload (assuming file input ID is 'fileInput')
-  const fileInput = document.getElementById('fileInput');
-  const file = fileInput.files[0];
-  let fileId = null;
-  if (file) {
-    try {
-      fileId = await uploadImage(file); // Upload the image and get the file ID
-      if (!fileId) {
-        $("#form-message").html("Image upload failed.");
+      focusAreas.push($(this).val());
+    });
+  
+    // Handle file upload (assuming file input ID is 'fileInput')
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    let fileId = null;
+  
+    if (file) {
+      try {
+        fileId = await uploadImage(file); // Upload the image and get the file ID
+        if (!fileId) {
+          $("#form-message").html("Image upload failed.");
+          sendBtn.disabled = false;
+          sendBtn.textContent = "Send";
+          return; // Exit if upload fails
+        }
+      } catch (error) {
+        console.error("Upload error:", error);
+        $("#form-message").html("An error occurred during upload.");
         sendBtn.disabled = false;
         sendBtn.textContent = "Send";
-        return; // Exit if upload fails
+        return; // Exit on upload error
       }
-    } catch (error) {
-      console.error("Upload error:", error);
-      $("#form-message").html("An error occurred during upload.");
-      sendBtn.disabled = false;
-      sendBtn.textContent = "Send";
-      return; // Exit on upload error
     }
-  }
-
-// Submit Google Form
-$.ajax({
-    url: "https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec",
-    data: JSON.stringify({
-        "inDenver": inDenver,
-        "firstName": firstName,
-        "lastName": lastName,
-        "emailAddress": emailAddress,
-        "phoneNumber": phoneNumber,
-        "age": age,
-        "socialMediaHandles": socialMediaHandles,
-        "occupation": occupation,
-        "budgetingRating": budgetingRating,
-        "annualIncome": annualIncome,
-        "rentMonthly": rentMonthly,
-        "debtTotal": debtTotal,
-        "focusAreas": focusAreas,
-        "fileId": fileId, // Include fileId if uploaded
-        "comment": comment,
-    }),
-    type: "POST",
-    redirect: "follow",
-    contentType: 'text/plain;charset=utf-8',
-    success: function(response) {
-    if (response.result === "success") {
+  
+    // Submit form data to Google Apps Script
+    const formData = {
+      "inDenver": inDenver,
+      "firstName": firstName,
+      "lastName": lastName,
+      "emailAddress": emailAddress,
+      "phoneNumber": phoneNumber,
+      "age": age,
+      "socialMediaHandles": socialMediaHandles,
+      "occupation": occupation,
+      "budgetingRating": budgetingRating,
+      "annualIncome": annualIncome,
+      "rentMonthly": rentMonthly,
+      "debtTotal": debtTotal,
+      "focusAreas": focusAreas,
+      "fileId": fileId, // Include fileId if uploaded
+      "comment": comment,
+    };
+  
+    try {
+      const response = await fetch("YOUR_APPS_SCRIPT_WEB_APP_URL", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP error ${response.status}: ${errorText}`);
+      }
+  
+      const data = await response.json();
+  
+      if (data.result === "success") {
         $("#form-message").html(successMessage);
         resetGoogleForm();
-    } else {
+      } else {
         $("#form-message").html(errorMessage);
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      $("#form-message").html(errorMessage);
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Send";
     }
-    },
-    error: function() {
-    $("#form-message").html(errorMessage);
-    },
-    complete: function() {
-    // Re-enable submit button and restore text
-    sendBtn.disabled = false;
-    sendBtn.textContent = "Send";
-    }
-});
-
-return false;
-}
+  }
