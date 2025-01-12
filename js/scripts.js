@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Rent and Debt requirements
 document.addEventListener('DOMContentLoaded', function() {
     const rentInput = document.getElementById('rent');
-    const debtInput = document.getElementById('debt');
     const form = rentInput?.closest('form') || debtInput?.closest('form');
 
     function filterNumbersAndHyphens(inputElement) {
@@ -138,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     filterNumbersAndHyphens(rentInput);
-    filterNumbersAndHyphens(debtInput);
 
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -147,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
             event.stopPropagation();
           } else {
             console.log("Form submitted with rent:", rentInput.value)
-            console.log("Form submitted with debt:", debtInput.value)
           }
         });
     } else {
