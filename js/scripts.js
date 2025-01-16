@@ -264,6 +264,10 @@ function resetGoogleForm() {
     $('#comments').val("");
     $('input[name="focusAreas[]"]').prop('checked', false);
     $('#creatingBudgetCheck').prop('checked', true);
+
+    // Reset the Uploadcare widget
+    var uploadcareWidget = uploadcare.Widget('[role=uploadcare-uploader]');
+    uploadcareWidget.clear(); // This clears the uploaded file and resets the widget
 }
 
 
