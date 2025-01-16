@@ -355,6 +355,9 @@ function submitGoogleForm(event) {
             // Re-enable submit button and restore text
             sendBtn.disabled = false;
             sendBtn.textContent = "Send";
+            // Reset Uploadcare widget as well
+            var uploadcareWidget = uploadcare.Widget('[role=uploadcare-uploader]');
+            uploadcareWidget.clear(); // This clears the uploaded file and resets the widget
         }
     });
 
