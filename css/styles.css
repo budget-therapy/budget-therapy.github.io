@@ -12994,3 +12994,7 @@ header.masthead .bg-circle-4 {
 .text-required {
   color: red;
 }
+
+#email-catch-div {
+  display: none;
+}

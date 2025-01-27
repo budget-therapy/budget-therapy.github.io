@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-              console.log("Form submitted with firstName:", firstNameInput.value)
-              console.log("Form submitted with lastName:", lastNameInput.value)
+                console.log("Form submitted with firstName:", firstNameInput.value)
+                console.log("Form submitted with lastName:", lastNameInput.value)
             }
         });
     } else {
@@ -140,12 +140,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (form) {
         form.addEventListener('submit', function(event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          } else {
-            console.log("Form submitted with rent:", rentInput.value)
-          }
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                console.log("Form submitted with rent:", rentInput.value)
+            }
         });
     } else {
         console.error("Form element not found!");
@@ -164,8 +164,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-              //If the form is valid, continue with submission
-              console.log("Form submitted with email:", emailInput.value)
+                //If the form is valid, continue with submission
+                console.log("Form submitted with email:", emailInput.value)
             }
         });
     } else {
@@ -210,8 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
         commentsWordCount.textContent = `${wordCount} / 30 words`;
 
         if (wordCount < 30) {
-          commentsTextarea.setCustomValidity("Please enter at least 30 words.");
-          minWordFeedback.style.display = "block"; // Show the feedback
+            commentsTextarea.setCustomValidity("Please enter at least 30 words.");
+            minWordFeedback.style.display = "block"; // Show the feedback
         } else {
             commentsTextarea.setCustomValidity(""); // Reset custom validity
             minWordFeedback.style.display = "none"; // Hide the feedback
@@ -252,7 +252,7 @@ function resetGoogleForm() {
     $('#lastname').val("");
     $('#emailaddress').val("");
     $('#phonenumber').val("");
-    $('#age').val("");    
+    $('#age').val("");
     $('#socialMediaHandles').val("");
     $('#occupation').val("");
     $('#budgetingRating').val(5);
@@ -314,7 +314,16 @@ function submitGoogleForm(event) {
         focusAreas.push($(this).val());
     });
 
-// Submit Google Form
+    // Stop Spam
+    var hiddenField = $('#email-catch').val();
+    if (hiddenField != "") {
+        $("#form-message").html(errorMessage);
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Send";
+        return false;
+    }
+
+    // Submit Google Form
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbxwaN88nUV_h-NRxAozDRfkhyu1GN_i57nceJEDzuL8YVU1sgFYgXb7yZzdCrNrzqkF/exec",
         data: JSON.stringify({
