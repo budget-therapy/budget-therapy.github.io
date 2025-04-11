@@ -3689,8 +3689,8 @@ fieldset:disabled .btn {
   }
 }
 
-.collapsible {
-  background-color: transparent;
+.collapsible-centered {
+  background: transparent;
   color: #333;
   cursor: pointer;
   padding: 10px;
@@ -3698,18 +3698,18 @@ fieldset:disabled .btn {
   text-align: center;
   outline: none;
   font-size: 16px;
-  display: block; /* Ensures the button can be centered */
+  display: block;
   margin-left: auto;
-  margin-right: auto; /* Centers the button horizontally */
+  margin-right: auto;
 }
-.collapsible:hover {
-  background-color: #ddd;
+.collapsible-centered:hover {
+  background: #f1f1f1;
 }
 .content {
   padding: 0 10px;
   display: none;
   overflow: hidden;
-  background-color: transparent;
+  background: #f9f9f9;
 }
 .content.show {
   display: block;
