@@ -12829,11 +12829,10 @@ header.masthead {
   overflow: hidden;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
-  background-image: url('/assets/img/masthead-small.webp'); /* Only the image */
+  background-image: url('/assets/img/masthead-small.webp');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  /* Removed background-blend-mode */
 }
 
 @media (min-width: 768px) {
