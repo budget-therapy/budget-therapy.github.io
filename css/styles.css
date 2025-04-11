@@ -3708,10 +3708,11 @@ fieldset:disabled .btn {
   background: #e7e7e7;
 }
 .content {
-  padding: 0 10px;
+  padding: 10px;
   display: none;
-  overflow: hidden;
+  overflow: visible;
   background: #e7e7e7;
+  text-align: center;
 }
 .content.show {
   display: block;
