@@ -522,8 +522,9 @@ output {
 
 iframe {
   width: 100%;
-  height: 500px; /* Adjust as needed */
+  height: 1000px;
   border: none;
+  display: block;
 }
 
 summary {
