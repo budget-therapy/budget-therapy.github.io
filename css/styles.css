@@ -3690,7 +3690,7 @@ fieldset:disabled .btn {
 }
 
 .collapsible {
-  background-color: #f1f1f1;
+  background-color: transparent;
   color: #333;
   cursor: pointer;
   padding: 10px;
@@ -3706,7 +3706,7 @@ fieldset:disabled .btn {
   padding: 0 10px;
   display: none;
   overflow: hidden;
-  background-color: #f9f9f9;
+  background-color: transparent;
 }
 .content.show {
   display: block;
