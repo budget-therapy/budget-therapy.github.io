@@ -3689,6 +3689,29 @@ fieldset:disabled .btn {
   }
 }
 
+.collapsible {
+  background-color: #f1f1f1;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+}
+.collapsible:hover {
+  background-color: #ddd;
+}
+.content {
+  padding: 0 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+.content.show {
+  display: block;
+}
+
 .dropup,
 .dropend,
 .dropdown,
