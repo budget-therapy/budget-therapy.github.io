@@ -9360,6 +9360,22 @@ input[type="range"]:focus::-moz-range-thumb {
   background-image: var(--bs-gradient) !important;
 }
 
+.centered-details {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.centered-details summary {
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+}
+.centered-details[open] p {
+  text-align: center;
+  padding: 10px;
+}
+
 .user-select-all {
   -webkit-user-select: all !important;
   -moz-user-select: all !important;
