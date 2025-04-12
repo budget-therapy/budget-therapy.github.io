@@ -7941,7 +7941,7 @@ input[type="range"]:focus::-moz-range-thumb {
   top: 0;
   width: 100%;
   z-index: 100;
-  padding-top: 75px;
+  padding-top: auto;
   padding-bottom: 10px;
   margin-bottom: 10px;
   background-image: linear-gradient(to bottom, #c9c7c7 40%, rgba(201, 199, 199, 0.9) 90%, transparent 100%);
