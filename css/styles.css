@@ -7951,6 +7951,10 @@ input[type="range"]:focus::-moz-range-thumb {
   margin-top: 0;
 }
 
+.sticky-header .custom-p {
+  padding-top: 1rem;
+}
+
 .section-content {
   padding-top: 10px;
 }
@@ -12853,6 +12857,10 @@ header.masthead {
   header.masthead {
     background-image: url('/assets/img/masthead.webp');
   }
+}
+
+.masthead-custom {
+  margin-bottom: 0 !important;
 }
 
 header.masthead .masthead-content {
