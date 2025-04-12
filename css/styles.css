@@ -3642,6 +3642,14 @@ fieldset:disabled .btn {
   --bs-btn-border-radius: 0.5rem;
 }
 
+.btn-md,
+.btn-group-sm>.btn {
+  --bs-btn-padding-y: 0.35rem;
+  --bs-btn-padding-x: 0.7rem;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-border-radius: 0.35rem;
+}
+
 .btn-sm,
 .btn-group-sm>.btn {
   --bs-btn-padding-y: 0.25rem;
