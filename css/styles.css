@@ -3643,7 +3643,7 @@ fieldset:disabled .btn {
 }
 
 .btn-md,
-.btn-group-sm>.btn {
+.btn-group-md>.btn {
   --bs-btn-padding-y: 0.35rem;
   --bs-btn-padding-x: 1rem;
   --bs-btn-font-size: 1rem;
