@@ -12997,48 +12997,73 @@ header.masthead .bg-circle-4 {
     padding: 3rem;
   }
 
-
-/* Carousel Updates for Multi-Item 1-by-1 Slide */
-
-/* Ensure carousel items display as flex to show cards side-by-side */
-#carousel-testimonials .carousel-item.active,
-#carousel-testimonials .carousel-item-next,
-#carousel-testimonials .carousel-item-prev {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Adjust card width */
-#carousel-testimonials .card {
-    flex: 0 0 auto; /* Don't grow/shrink unexpectedly */
-    width: 30%; /* Approx 1/3 width */
-    margin: 0 1.5%; /* Gap */
-    opacity: 0.7;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* On mobile, card should be wider and only one visible (others hidden via d-none) */
-@media (max-width: 767.98px) {
-    #carousel-testimonials .card {
-        width: 90%;
-        opacity: 1;
-    }
-}
-
-/* Center Focus (2nd item in the list of 3) */
-@media (min-width: 768px) {
-    #carousel-testimonials .carousel-item .card:nth-child(2) {
-        transform: scale(1.1);
-        opacity: 1;
-        z-index: 2;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow */
-        background-color: #f8f9fa; /* Slightly lighter bg to pop */
-    }
-}
   .custom-g {
     --bs-gutter-x: 3rem;
   }
+}
+
+
+/* Slick Carousel Styling */
+
+#carousel-testimonials {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Card styling within slick slide */
+#carousel-testimonials .card {
+    margin: 10px; /* Gap between cards */
+    opacity: 0.7;
+    transform: scale(0.9);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Center Focus Effect */
+#carousel-testimonials .slick-center .card {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: #f8f9fa;
+    z-index: 2;
+}
+
+/* Arrow Customization */
+.slick-prev:before, .slick-next:before {
+    color: #342e2e; /* Dark arrow color */
+    font-size: 30px;
+}
+
+.slick-prev {
+    left: -40px;
+}
+
+.slick-next {
+    right: -40px;
+}
+
+/* Fix for testimonial slider height if needed */
+.testimonials-slider .slick-slide {
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    /* Mobile adjustments */
+    #carousel-testimonials .card {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .slick-prev {
+        left: -25px;
+        z-index: 10;
+    }
+    
+    .slick-next {
+        right: -25px;
+        z-index: 10;
+    }
 }
 
 @media (min-width: 1200px) {
